@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Resume Builder And Job Search Platform</title>
+    <style>
+        
+        h1{
+            text-align: center;;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color:mediumslateblue;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+        nav {
+            display: flex;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Online Resume Builder and Job Search Platform</h1>
+    <nav>
+        <a href="#Build Your Resume">Build your Resume</a>
+        <a href="#Search Jobs">Search Jobs</a>
+        <a href="#ideas">User Feedback</a>
+        <a href="#login">User Login</a>
+    </nav>
+
+    <h2>Welcome users we help you to Build your resume and find your Dream Job</h2>
+    <img src="https://tse2.mm.bing.net/th?id=OIP.Uxhv1T8r3bNwLcO5VoMj6QHaM9&pid=Api&P=0&h=220">
+    <img src="https://tse3.mm.bing.net/th?id=OIP.hZACjjEXD6ygRHZP0wT_JwHaGL&pid=Api&P=0&h=220">
+    <img src="https://tse3.mm.bing.net/th?id=OIP.B4x0VbIjYwDkZScfu9GfQgHaEK&pid=Api&P=0&h=220">
+    <img src="https://tse4.mm.bing.net/th?id=OIP.-Ov6laJr2TooIswRCe51ugHaFj&pid=Api&P=0&h=220">
+    <h2>Resume Builder</h2>
+    <p>Please give your details</p>
+    
+   
+    <div id="page1" class="page active">
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" rows="4" required></textarea>
+
+            <button type="button" onclick="nextPage()">Next</button>
+        </form>
+    </div>
+
+    
+    <div id="page2" class="page">
+        <form>
+            <label for="education">Education:</label>
+            <textarea id="education" rows="4" required></textarea>
+
+            <button type="button" onclick="prevPage()">Previous</button>
+            <button type="button" onclick="nextPage()">Next</button>
+        </form>
+    </div>
+
+   
+    <div id="page3" class="page">
+        <form>
+            <label for="experience">Experience:</label>
+            <textarea id="experience" rows="4" required></textarea>
+
+            <button type="button" onclick="prevPage()">Previous</button>
+            <button type="button" onclick="nextPage()">Next</button>
+        </form>
+    </div>
+
+    
+    <div id="page4" class="page">
+        <form>
+            <label for="skills">Skills:</label>
+            <textarea id="skills" rows="4" required></textarea>
+
+            <button type="button" onclick="prevPage()">Previous</button>
+            <button type="button" onclick="nextPage()">Next</button>
+        </form>
+    </div>
+
+    
+    <div id="page5" class="page">
+        <h2>Generated Resume</h2>
+        <div id="resumeOutput"></div>
+
+        <button type="button" onclick="prevPage()">Previous</button>
+        <button type="button" onclick="generateResume()">Generate Resume</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+
+        function nextPage() {
+            if (currentPage < 5) {
+                document.getElementById(`page${currentPage}`).classList.remove('active');
+                currentPage++;
+                document.getElementById(`page${currentPage}`).classList.add('active');
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                document.getElementById(`page${currentPage}`).classList.remove('active');
+                currentPage--;
+                document.getElementById(`page${currentPage}`).classList.add('active');
+            }
+        }
+
+        function generateResume() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('skills').value;
+
+            const resumeOutput = document.getElementById('resumeOutput');
+            resumeOutput.innerHTML = `
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Phone: ${phone}</p>
+                <p>Address: ${address}</p>
+                <h3>Education:</h3>
+                <p>${education}</p>
+                <h3>Experience:</h3>
+                <p>${experience}</p>
+                <h3>Skills:</h3>
+                <p>${skills}</p>
+            `;
+
+            nextPage(); 
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #jobList {
+            margin-top: 20px;
+        }
+
+        .job {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Job Search</h2>
+    <img src="https://tse4.mm.bing.net/th?id=OIP.prQHWde0w8ZUem4Rwi93hgHaD4&pid=Api&P=0&h=220">
+    <img src="https://tse4.mm.bing.net/th?id=OIP.JI-ReEFuxCl2b7dhJLuHZQHaE8&pid=Api&P=0&h=220">
+    <img src="https://tse1.mm.bing.net/th?id=OIP.-wtnTb0O7K1-iOtp9Wu4PgHaEM&pid=Api&P=0&h=220">
+    <p>Search jobs suitable to you here</p>
+
+   
+    <label for="jobTitle">Job Title:</label>
+    <input type="text" id="jobTitle">
+
+    <label for="location">Location:</label>
+    <input type="text" id="location">
+
+    <button type="button" onclick="searchJobs()">Search Jobs</button>
+
+   
+    <div id="jobList"></div>
+
+    <script>
+        const jobs = [
+            { title: 'Web Developer', location: 'New York', company: 'Tech Co', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+            { title: 'Data Scientist', location: 'San Francisco', company: 'Data Corp', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+            { title: 'UX Designer', location: 'Seattle', company: 'Design Studio', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+            
+        ];
+
+        function searchJobs() {
+            const jobTitle = document.getElementById('jobTitle').value.toLowerCase();
+            const location = document.getElementById('location').value.toLowerCase();
+
+            const filteredJobs = jobs.filter(job =>
+                job.title.toLowerCase().includes(jobTitle) && job.location.toLowerCase().includes(location)
+            );
+
+            displayJobs(filteredJobs);
+        }
+
+        function displayJobs(jobs) {
+            const jobListContainer = document.getElementById('jobList');
+            jobListContainer.innerHTML = '';
+
+            if (jobs.length === 0) {
+                jobListContainer.innerHTML = '<p>No jobs found.</p>';
+                return;
+            }
+
+            jobs.forEach(job => {
+                const jobElement = document.createElement('div');
+                jobElement.classList.add('job');
+
+                jobElement.innerHTML = `
+                    <h2>${job.title}</h2>
+                    <p>Location: ${job.location}</p>
+                    <p>Company: ${job.company}</p>
+                    <p>${job.description}</p>
+                `;
+
+                jobListContainer.appendChild(jobElement);
+            });
+        }
+    </script>
+    <section id="ideas">
+        <h2>Share Your Experience</h2>
+        <p>Please tell how can we improve:</p>
+        <form id="ideasForm">
+            <label for="idea">Your Feedback:</label>
+            <textarea id="idea" name="idea" rows="4" cols="50" required></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <div class="container">
+        <form id="loginForm">
+            <p>LOGIN</p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <footer>
+        <p>&copy; 2023 Job search and Resume Builder Website</p>
+    </footer>
+</body>
+</html>
